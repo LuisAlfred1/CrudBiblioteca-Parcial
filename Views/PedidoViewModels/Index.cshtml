@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CrudBiblioteca.Models.PedidoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mb-4">Apartado de pedidos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">
+        <i class="bi bi-basket3"></i> Agregar Pedido
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PedidoId" class="btn btn-primary">
+                        <i class="bi bi-pen"></i>
+                </a> |
+                <a asp-action="Details" asp-route-id="@item.PedidoId" class="btn btn-dark">
+                        <i class="bi bi-eye"></i>
+                </a> |
+                <a asp-action="Delete" asp-route-id="@item.PedidoId" class="btn btn-danger">
+                        <i class="bi bi-archive"></i>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
